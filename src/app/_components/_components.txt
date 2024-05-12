@@ -1,0 +1,2 @@
+Using an underscore when naming a folder tells App Router that it should not be part of the routing. This means
+you could put a page.tsx file in this folder and it would not be accessible at route/_components/page.tsx.
