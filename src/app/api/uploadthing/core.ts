@@ -21,6 +21,10 @@ export const ourFileRouter = {
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { userId: user.userId };
     })
+    .onUploadError((error) => {
+      console.log("failed to upload file");
+      console.log(error);
+    })
     .onUploadComplete(async ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
       console.log("Upload complete for userId:", metadata.userId);

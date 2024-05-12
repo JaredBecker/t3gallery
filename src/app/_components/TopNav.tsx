@@ -25,6 +25,10 @@ export default function TopNav() {
                 console.log(metadata);
                 router.refresh();
               }}
+              onUploadError={(error) => {
+                console.log("failed to upload file");
+                console.log(error);
+              }}
             />
             <UserButton />
           </SignedIn>
