@@ -1,8 +1,8 @@
 // Important note is that this is running on the server, so we won't see console logs on the client
 // side. This lets us keep all database queries private to the server.
-import { headers } from "next/headers";
 import { db } from "~/server/db";
 
+export const dynamic = "force-dynamic";
 // Uploaded via uploadthing.com
 const mockUrls = [
   "https://utfs.io/f/3fe8e8da-95e2-49d0-bfb4-4cbc98b80a3b-5pd0us.jpg",
@@ -15,8 +15,6 @@ const mockImages = mockUrls.map((url, i) => ({
 }));
 
 export default async function HomePage() {
-  // This is for testing
-  headers();
   // Make sure to import from ~/server/db to use our own database instance
   const posts = await db.query.posts.findMany();
 
