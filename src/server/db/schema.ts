@@ -14,6 +14,11 @@ import {
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
  * database instance for multiple projects.
  *
+ * This is where you would add your own tables and indexes. You use the command db:push to push your
+ * schema to the database. Do a database migration.
+ *
+ * Use the command db:studio to view your database schema in a visual editor.
+ *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
 export const createTable = pgTableCreator((name) => `t3gallery_${name}`);
@@ -30,5 +35,5 @@ export const posts = createTable(
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
-  })
+  }),
 );
