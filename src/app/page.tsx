@@ -2,7 +2,9 @@
 // side. This lets us keep all database queries private to the server.
 import { db } from "~/server/db";
 
+// This tells Next.js not to cache this route which will result in this route being rendered for each user at request time
 export const dynamic = "force-dynamic";
+
 // Uploaded via uploadthing.com
 const mockUrls = [
   "https://utfs.io/f/3fe8e8da-95e2-49d0-bfb4-4cbc98b80a3b-5pd0us.jpg",
@@ -15,11 +17,9 @@ const mockImages = mockUrls.map((url, i) => ({
 }));
 
 export default async function HomePage() {
-  // Make sure to import from ~/server/db to use our own database instance
+  // Make sure to import from ~/server/db to use our own database instance and not from @vercel/postgres
   const posts = await db.query.posts.findMany();
 
-  console.log(posts);
-  console.log("done");
   return (
     <main className="">
       <div className="flex flex-wrap gap-4">
