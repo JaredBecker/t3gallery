@@ -1,10 +1,7 @@
-import { db } from "~/server/db";
+import { getMyImages } from "~/server/queries";
 
 export default async function Images() {
-  // Make sure to import from ~/server/db to use our own database instance and not from @vercel/postgres
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.id),
-  });
+  const images = await getMyImages();
 
   return (
     <div className="flex flex-wrap gap-4">
